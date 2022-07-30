@@ -8,11 +8,33 @@ namespace Malware.Springs
         {
             this.time = Time.time;
             this.position = initial;
-            this.velocity = 0 * initial;
+            this.velocity = 0f * initial;
             this.target = initial;
 
             this.Speed = s;
             this.Damper = d;
+        }
+
+        public FloatSpring (float initial)
+        {
+            this.time = Time.time;
+            this.position = initial;
+            this.velocity = 0f * initial;
+            this.target = initial;
+
+            this.Speed = 1f;
+            this.Damper = 1f;
+        }
+
+        public FloatSpring ()
+        {
+            this.time = Time.time;
+            this.position = 1f;
+            this.velocity = 0f * 1f;
+            this.target = 1f;
+
+            this.Speed = 1f;
+            this.Damper = 1f;
         }
 
         float time;
@@ -227,6 +249,20 @@ namespace Malware.Springs
             xSpring = new FloatSpring (initial.x, springSpeed, springDampening);
             ySpring = new FloatSpring (initial.y, springSpeed, springDampening);
             zSpring = new FloatSpring (initial.z, springSpeed, springDampening);
+        }
+
+        public Vector3Spring (Vector3 initial)
+        {
+            xSpring = new FloatSpring (initial.x);
+            ySpring = new FloatSpring (initial.y);
+            zSpring = new FloatSpring (initial.z);
+        }
+
+        public Vector3Spring ()
+        {
+            xSpring = new FloatSpring ();
+            ySpring = new FloatSpring ();
+            zSpring = new FloatSpring ();
         }
 
         private FloatSpring xSpring;
